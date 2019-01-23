@@ -51,9 +51,9 @@ open class CallRecordReceiver(private var callRecord: CallRecord) : PhoneCallRec
     }
 
     // Derived classes could override these to respond to specific events of interest
-    protected fun onRecordingStarted(context: Context, callRecord: CallRecord, audioFile: File?) {}
+    protected open fun onRecordingStarted(context: Context, callRecord: CallRecord, audioFile: File?) {}
 
-    protected fun onRecordingFinished(context: Context, callRecord: CallRecord, audioFile: File?) {}
+    protected open fun onRecordingFinished(context: Context, callRecord: CallRecord, audioFile: File?) {}
 
     private fun startRecord(context: Context, seed: String, phoneNumber: String?) {
         try {
