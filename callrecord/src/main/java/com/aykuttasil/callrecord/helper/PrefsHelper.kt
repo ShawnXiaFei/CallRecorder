@@ -8,7 +8,7 @@ import android.preference.PreferenceManager
  * Created by aykutasil on 8.12.2016.
  */
 
-class PrefsHelper private constructor(){
+class PrefsHelper private constructor() {
 
     lateinit var preference: SharedPreferences
 
@@ -27,6 +27,7 @@ class PrefsHelper private constructor(){
 
         private val DEFAULT_STRING_VALUE: String? = null
         private const val DEFAULT_INT_VALUE = 0
+        private const val DEFAULT_LONG_VALUE = 0L
         private const val DEFAULT_BOOLEAN_VALUE = false
 
         fun getDefaultPreference(context: Context): SharedPreferences {
@@ -47,6 +48,14 @@ class PrefsHelper private constructor(){
 
         fun readPrefInt(context: Context, key: String): Int {
             return PrefsHelper(context).preference.getInt(key, DEFAULT_INT_VALUE)
+        }
+        
+        fun writePrefLong(context: Context, key: String, value: Long) {
+            PrefsHelper(context).prefEditor.putLong(key, value).commit()
+        }
+
+        fun readPrefLong(context: Context, key: String): Long {
+            return PrefsHelper(context).preference.getLong(key, DEFAULT_LONG_VALUE)
         }
 
         fun writePrefBool(context: Context, key: String, value: Boolean) {
